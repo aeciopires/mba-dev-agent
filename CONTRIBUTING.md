@@ -74,25 +74,25 @@ e siga estes passos:
 
 1. Crie um fork de `aeciopires/mba-dev-agent` no GitHub e clone-o:
 
-   ```bash
-   git clone git@github.com:SEU_USUARIO/mba-dev-agent.git
-   cd mba-dev-agent
-   ```
+```bash
+git clone git@github.com:SEU_USUARIO/mba-dev-agent.git
+cd mba-dev-agent
+```
 
 2. Registre o repositório original como `upstream` e confira os remotos:
 
-   ```bash
-   git remote add upstream git@github.com:aeciopires/mba-dev-agent.git
-   git remote -v
-   ```
+```bash
+git remote add upstream git@github.com:aeciopires/mba-dev-agent.git
+git remote -v
+```
 
 3. Atualize a branch principal local e crie uma branch para sua alteração:
 
-   ```bash
-   git switch main
-   git pull upstream main
-   git switch -c tipo/descricao-curta
-   ```
+```bash
+git switch main
+git pull upstream main
+git switch -c tipo/descricao-curta
+```
 
    Use um nome simples e descritivo para a branch, por exemplo
    `docs/guia-de-instalacao` ou `fix/carregamento-agente`.
@@ -100,20 +100,20 @@ e siga estes passos:
 4. Faça e valide as alterações. Revise o diff e confirme que somente os arquivos
    pretendidos serão incluídos:
 
-   ```bash
-   git status --short
-   git diff --check
-   git diff
-   ```
+```bash
+git status --short
+git diff --check
+git diff
+```
 
 5. Adicione os arquivos pertinentes, crie commits focados com mensagens
    descritivas e envie a branch ao seu fork:
 
-   ```bash
-   git add caminho/do/arquivo
-   git commit -m "docs: descreve a estrutura do projeto"
-   git push --set-upstream origin tipo/descricao-curta
-   ```
+```bash
+git add caminho/do/arquivo
+git commit -m "docs: descreve a estrutura do projeto"
+git push --set-upstream origin tipo/descricao-curta
+```
 
    Não inclua credenciais, arquivos `.env`, ambientes virtuais nem outros
    arquivos locais no commit. Se houver mais de uma alteração independente,
@@ -127,13 +127,13 @@ e siga estes passos:
 7. Após o merge, atualize sua branch principal e, se desejar, remova a branch de
    trabalho:
 
-   ```bash
-   git switch main
-   git pull upstream main
-   git push origin main
-   git branch -d tipo/descricao-curta
-   git push origin --delete tipo/descricao-curta
-   ```
+```bash
+git switch main
+git pull upstream main
+git push origin main
+git branch -d tipo/descricao-curta
+git push origin --delete tipo/descricao-curta
+```
 
 Para sincronizar o fork posteriormente, estando na branch `main`, execute:
 
