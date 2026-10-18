@@ -20,6 +20,7 @@ Este documento descreve como preparar o ambiente de desenvolvimento do
   - [Ativar o autocomplete do mise](#ativar-o-autocomplete-do-mise)
   - [Instalação das dependências do projeto](#instalação-das-dependências-do-projeto)
   - [Verificação](#verificação)
+
 <!-- TOC -->
 
 ## Sistemas operacionais e arquiteturas

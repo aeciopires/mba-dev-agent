@@ -29,7 +29,7 @@ Nada de varrer arquivos: a busca é por esses dois nomes exatos.
 
 ```text
 src/
-└── meu_agente1/            ← nome da pasta = app_name (sessões, adk web)
+└── meu_agente1/           ← nome da pasta = app_name (sessões, adk web)
     ├── __init__.py        ← pode ser vazio
     ├── agent.py           ← define root_agent
     └── .env               ← carregado automaticamente antes do import
