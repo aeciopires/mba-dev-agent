@@ -1,5 +1,15 @@
 # Como contribuir
 
+<!-- TOC -->
+
+- [Como contribuir](#como-contribuir)
+  - [Preparar o ambiente](#preparar-o-ambiente)
+  - [Boas práticas](#boas-práticas)
+  - [Validação](#validação)
+  - [Fluxo de commits e pull requests](#fluxo-de-commits-e-pull-requests)
+
+<!-- TOC -->
+
 Obrigado por contribuir com este repositório de estudos e exemplos do Google
 ADK. Estas orientações ajudam a manter as contribuições claras, reproduzíveis
 e adequadas ao objetivo didático do projeto.
@@ -20,20 +30,15 @@ Se a alteração exigir executar um agente com o modelo Gemini, configure
 arquivo `.env` nem inclua chaves, tokens ou dados pessoais em alterações,
 registros de erro ou exemplos.
 
-## Fluxo de contribuição
-
-1. Verifique se a proposta está alinhada ao propósito educacional do
-   repositório. Para mudanças maiores, abra uma issue ou discussão antes de
-   começar, quando possível.
-2. Crie uma branch dedicada à alteração.
-3. Faça mudanças focadas, seguindo os padrões existentes e mantendo a
-   compatibilidade com as versões de Python e Google ADK declaradas no projeto.
-4. Atualize a documentação relacionada sempre que o comportamento, os
-   requisitos ou os passos de uso mudarem.
-5. Revise e valide as alterações antes de abrir um pull request.
-
 ## Boas práticas
 
+- Verifique se a proposta está alinhada ao propósito educacional do
+  repositório.
+- Faça mudanças focadas, seguindo os padrões existentes e mantendo a
+  compatibilidade com as versões de Python e Google ADK declaradas no projeto.
+- Atualize a documentação relacionada sempre que o comportamento, os
+  requisitos ou os passos de uso mudarem.
+- Revise e valide as alterações antes de abrir um pull request.
 - Prefira exemplos pequenos, legíveis e explicados em português (pt-BR).
 - Mantenha nomes de pacotes de agente compatíveis com identificadores Python,
   como `meu_agente`; evite espaços e hífens.
@@ -61,22 +66,80 @@ execute também o agente afetado, conforme os comandos descritos no
 [README](./README.md), se tiver as credenciais necessárias. Não inclua a saída
 de sessões que contenham dados sensíveis.
 
-Antes de enviar a contribuição, confira também:
+## Fluxo de commits e pull requests
+
+Use um fork para propor alterações. Configure a autenticação SSH do GitHub
+conforme a [documentação oficial](https://docs.github.com/authentication/connecting-to-github-with-ssh)
+e siga estes passos:
+
+1. Crie um fork de `aeciopires/mba-dev-agent` no GitHub e clone-o:
+
+   ```bash
+   git clone git@github.com:SEU_USUARIO/mba-dev-agent.git
+   cd mba-dev-agent
+   ```
+
+2. Registre o repositório original como `upstream` e confira os remotos:
+
+   ```bash
+   git remote add upstream git@github.com:aeciopires/mba-dev-agent.git
+   git remote -v
+   ```
+
+3. Atualize a branch principal local e crie uma branch para sua alteração:
+
+   ```bash
+   git switch main
+   git pull upstream main
+   git switch -c tipo/descricao-curta
+   ```
+
+   Use um nome simples e descritivo para a branch, por exemplo
+   `docs/guia-de-instalacao` ou `fix/carregamento-agente`.
+
+4. Faça e valide as alterações. Revise o diff e confirme que somente os arquivos
+   pretendidos serão incluídos:
+
+   ```bash
+   git status --short
+   git diff --check
+   git diff
+   ```
+
+5. Adicione os arquivos pertinentes, crie commits focados com mensagens
+   descritivas e envie a branch ao seu fork:
+
+   ```bash
+   git add caminho/do/arquivo
+   git commit -m "docs: descreve a estrutura do projeto"
+   git push --set-upstream origin tipo/descricao-curta
+   ```
+
+   Não inclua credenciais, arquivos `.env`, ambientes virtuais nem outros
+   arquivos locais no commit. Se houver mais de uma alteração independente,
+   prefira separá-las em commits claros.
+
+6. No GitHub, abra um pull request do seu fork para a branch `main` do
+   repositório original. Descreva o objetivo, resuma as mudanças e informe as
+   validações executadas. Considere e responda às sugestões da revisão; envie
+   novos commits à mesma branch quando fizer ajustes.
+
+7. Após o merge, atualize sua branch principal e, se desejar, remova a branch de
+   trabalho:
+
+   ```bash
+   git switch main
+   git pull upstream main
+   git push origin main
+   git branch -d tipo/descricao-curta
+   git push origin --delete tipo/descricao-curta
+   ```
+
+Para sincronizar o fork posteriormente, estando na branch `main`, execute:
 
 ```bash
-git diff --check
-git status --short
+git pull upstream main
+git push origin main
 ```
-
-## Pull requests
-
-Ao abrir um pull request:
-
-- explique o problema ou objetivo e resuma a solução;
-- indique os arquivos ou agentes afetados;
-- informe os comandos de validação executados e os resultados;
-- inclua ou atualize a documentação pertinente;
-- mantenha a alteração focada e não inclua arquivos locais, ambientes virtuais
-  ou segredos.
 
 Contribuições estão sujeitas aos termos da licença GPLv3 deste repositório.
