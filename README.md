@@ -58,7 +58,7 @@ na raiz do repositório:
 
 ```bash
 mise install
-mise exec -- uv sync --locked
+uv init .
 ```
 
 Para executar os agentes que usam o modelo Gemini, configure uma chave válida da
@@ -69,15 +69,16 @@ Google AI Studio de forma local. Não compartilhe nem versione essa credencial.
 Execute os comandos na raiz do repositório:
 
 ```bash
-mise exec -- uv run adk run src/meu_agente1
-mise exec -- uv run adk run src/meu_agente2
+source .venv/bin/activate  # ativa o ambiente virtual
+uv run adk run src/meu_agente1
+uv run adk run src/meu_agente2
 ```
 
 O ADK também oferece uma interface web. Para carregar os agentes do diretório
 `src/`, execute:
 
 ```bash
-mise exec -- uv run adk web src
+uv run adk web src
 ```
 
 ## Documentação

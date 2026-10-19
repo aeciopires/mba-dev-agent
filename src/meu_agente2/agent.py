@@ -37,7 +37,13 @@ PLANS: dict[str, dict] = {
 
 
 def get_invoice_by_client_id(client_id: int | str) -> dict:
-    """Retorna a fatura correspondente ao ID fornecido."""
+    """
+        Retorna a fatura correspondente ao ID fornecido.
+        Args:
+            client_id (int | str): O ID do cliente para o qual a fatura deve ser buscada.
+        Returns:
+            dict: Um dicionário contendo os detalhes da fatura, ou uma mensagem de erro se a fatura não for encontrada.
+    """
     normalized_client_id = str(client_id)
     for invoice in INVOICES:
         if str(invoice["client_id"]) == normalized_client_id:
@@ -46,7 +52,29 @@ def get_invoice_by_client_id(client_id: int | str) -> dict:
 
 
 def cancel_plan(client_id: str, password: str, tool_context: ToolContext) -> dict:
-    """Cancela o plano do cliente correspondente ao ID fornecido."""
+    """
+        Cancela o plano do cliente correspondente ao ID fornecido.
+        Args:
+            client_id (str): O ID do cliente para o qual o plano deve ser cancelado.
+            password (str): A senha para confirmar a ação.
+            tool_context (ToolContext): O contexto da ferramenta.
+        Returns:
+            dict: Um dicionário contendo a mensagem de resultado e o status da operação.
+    """
+
+    if tool_context.tool_confirmation is None:
+        tool_context.request_confirmation(
+            hint="Tem certeza de que deseja cancelar?",
+            payload={
+                "client_id": client_id,
+                "senha": ""
+            }
+        )
+        return {"status": "aguardando_confirmacao"}
+
+    if not tool_context.tool_confirmation.confirmed:
+        return {"status": "nao_cancelada", "mensagem": "Cancelamento não confirmado pelo usuário."}
+
     if password != "senha123":
         return {
             "message": "Senha incorreta. O plano não pode ser cancelado.",
