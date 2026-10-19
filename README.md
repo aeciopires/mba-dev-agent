@@ -34,14 +34,12 @@ desenvolver agentes com o Google ADK.
 ```text
 .
 ├── docs/                 # reúne tutoriais e notas técnicas do projeto
-│   └── 01-adk-run-carregamento-de-agentes.md
+│   └── [...]             # Documentos de referência e tutoriais do projeto
 ├── src/
-│   ├── meu_agente1/
+│   ├── agent_name/
 │   │   ├── __init__.py
 │   │   └── agent.py      # contém o exemplo mínimo de agente
-│   └── meu_agente2/
-│       ├── __init__.py
-│       └── agent.py      # contém o agente de atendimento e suas ferramentas demonstrativas
+│   └── [...]
 ├── .env.example          # serve de referência para variáveis de ambiente. Crie seu
                           # arquivo local de configuração a partir dele quando necessário; nunca adicione chaves ou # outros segredos ao controle de versão
 ├── mise.toml             # define a versão dos softwares usados no repositório
@@ -69,15 +67,20 @@ Google AI Studio de forma local. Não compartilhe nem versione essa credencial.
 Execute os comandos na raiz do repositório:
 
 ```bash
-source .venv/bin/activate  # ativa o ambiente virtual
-uv run adk run src/meu_agente1
-uv run adk run src/meu_agente2
+# ativa o ambiente virtual
+source .venv/bin/activate
+# para executar um agente específico
+uv run adk run src/agent_name
 ```
 
 O ADK também oferece uma interface web. Para carregar os agentes do diretório
 `src/`, execute:
 
 ```bash
+# para carregar um agente específico
+uv run adk web src/agent_name
+
+# ou para carregar todos os agentes do diretório src/
 uv run adk web src
 ```
 
