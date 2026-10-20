@@ -86,8 +86,11 @@ uv run adk web src
 
 ## Documentação
 
-- [Como o `adk run` carrega o agente](./docs/01-adk-run-carregamento-de-agentes.md)
 - [Requisitos de software e instalação](./REQUIREMENTS.md)
+- [Como o `adk run` carrega o agente](./docs/01-adk-run-carregamento-de-agentes.md)
+- [Como agentes delegam tarefas no ADK — guia para aprender](./docs/02-subagents.md)
+- [O que faz um agente rodar no ADK — App, Runner, InvocationContext e eventos](./docs/03-adk-runtime-app-runner-aula.md)
+- [ADK, LangChain e LangGraph — como cada um pensa](./docs/04-adk-langchain-langgraph-comparacao.md)
 
 ## Como contribuir
 
